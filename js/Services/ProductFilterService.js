@@ -23,12 +23,26 @@ app.factory('ProductFilterService', function($filter) {
   ];
 
 
-  var toggleCategoryFilter = function(category) {
+  var getCategories = function(products) {
+    var categories = [];
+    _.forEach( products, function(product){
+      categories = _.union(categories,product.categories);
+    });
+    return categories;
+  }
 
-  };
+  var toggleCategoryFilter = function(currentCategoryFilters, category) {
+    var index = currentCategoryFilters.indexOf(category);
+    if ( index !== -1) {
+      currentCategoryFilters.splice(index, 1);
+    } else {
+      currentCategoryFilters.push(category);
+    }
+  }
 
   return {
     sortOptions: sortOptions,
+    getCategories: getCategories,
     toggleCategoryFilter: toggleCategoryFilter
   };
 });

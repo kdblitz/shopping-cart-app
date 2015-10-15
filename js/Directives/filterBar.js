@@ -8,6 +8,16 @@ app.directive('filterBar', function() {
       products:'='
     }, controller: function($scope, ProductFilterService) {
       $scope.sortOptions = ProductFilterService.sortOptions;
+      $scope.$watch(function() {
+        return $scope.products
+      }, function(products) {
+        console.log(products);
+        $scope.categories = ProductFilterService.getCategories(products);
+      });
+
+      $scope.toggleCategoryFilter = function(category) {
+        ProductFilterService.toggleCategoryFilter($scope.filterOptions.categoryFilter, category);
+      };
     }, link: function(scope) {
       scope.updateSortOption = function(sortOption) {
         scope.filterOptions.currentSortOption = sortOption;

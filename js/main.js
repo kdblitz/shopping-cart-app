@@ -1,41 +1,4 @@
 app.controller( "ProductCtrl", function ($scope, ProductService) {
-  $scope.sortOptions= [
-    {
-      name: "name",
-      desc: false,
-      label: "Name ascending"
-    },
-    {
-      name: "name",
-      desc: true,
-      label: "Name descending"
-    },
-    {
-      name: "price",
-      desc: false,
-      label: "Price ascending"
-    },
-    {
-      name: "price",
-      desc: true,
-      label: "Price descending"
-    }
-  ]
-
-  $scope.currentSortOption = $scope.sortOptions[0];
-
-  $scope.sortBy = function(key) {
-    var currentOption = _.indexOf($scope.sortOptions,$scope.currentSortOption)
-    var chosenOption = _.findIndex($scope.sortOptions,function(option) {
-      return option.name === key;
-    });
-
-    if (currentOption === chosenOption)
-      chosenOption++;
-
-    $scope.currentSortOption = $scope.sortOptions[chosenOption]
-  };
-
   $scope.getCategories = function() {
     var categories = []
     _.forEach( $scope.products, function(product){

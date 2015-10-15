@@ -1,7 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <!-- <pre>{{products|json}}</pre>
-    <pre>{{filterOptions|json}}</pre> -->
+    <!-- <pre>{{filterOptions|json}}</pre> -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
         data-target="#myfilters">
@@ -45,11 +44,13 @@
               <span class="glyphicon glyphicon-tag"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li ng-repeat="category in getCategories()"
+              <li ng-repeat="category in categories"
                 ng-click="toggleCategoryFilter(category)">
                 <a href="#">
-                  <span ng-show="categoryFilter.indexOf(category) > -1" class="text-success glyphicon glyphicon-ok"></span>
-                  {{category}}</a></li>
+                  <span ng-show="filterOptions.categoryFilter.indexOf(category) > -1"
+                    class="text-success glyphicon glyphicon-ok"></span>
+                    {{category}}</a>
+              </li>
             </ul>
           </div>
         </div>

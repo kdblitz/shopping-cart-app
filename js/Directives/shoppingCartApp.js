@@ -7,7 +7,8 @@ app.directive('shoppingCartApp', function() {
       $scope.products = ProductService.getProducts();
       $scope.filterOptions = {
         showSpecialOffers: true,
-        currentSortOption: ProductFilterService.sortOptions[0]
+        currentSortOption: ProductFilterService.sortOptions[0],
+        categoryFilter: []
       };
 
     },
