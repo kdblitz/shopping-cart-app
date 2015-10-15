@@ -3,9 +3,9 @@ app.directive('productList', function() {
     restrict: 'E',
     templateUrl: 'js/Directives/productList.html',
     scope: {
+      filterOptions: '=',
       products: '='
     }, link: function(scope) {
-      scope.showSpecialOffers = true;
       scope.categoryFilter = [];
     }
   };

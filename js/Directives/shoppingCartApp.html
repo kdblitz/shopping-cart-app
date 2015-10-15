@@ -1,4 +1,6 @@
 <div>
-  <filter-bar></filter-bar>
-  <product-list products="products"></product-list>
+  <!-- <pre>{{ filterOptions | json }}</pre>
+  <pre>{{ products | json }}</pre> -->
+  <filter-bar filter-options="filterOptions"></filter-bar>
+  <product-list filter-options="filterOptions" products="products"></product-list>
 </div>

@@ -1,5 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
+    <!-- <pre>{{products|json}}</pre>
+    <pre>{{filterOptions|json}}</pre> -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
         data-target="#myfilters">
@@ -10,13 +12,26 @@
     </div>
     <div class="collapse navbar-collapse" id="myfilters">
       <ul class="nav navbar-nav">
-        <li ng-class="{'active':showSpecialOffers}"
-          ng-click="showSpecialOffers = !showSpecialOffers">
+        <li ng-class="{'active':filterOptions.showSpecialOffers}"
+          ng-click="toggleSpecialOffers()">
           <a href="#">
             <span class="glyphicon"
-              ng-class="{'text-success glyphicon-eye-open': showSpecialOffers,
-              'text-danger glyphicon-eye-close': !showSpecialOffers}"></span>
+              ng-class="{'text-success glyphicon-eye-open': filterOptions.showSpecialOffers,
+              'text-danger glyphicon-eye-close': !filterOptions.showSpecialOffers}"></span>
             Special Offers</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Sorted by: {{filterOptions.currentSortOption.label}}
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="sortOption in sortOptions">
+              <a href="#" ng-click="updateSortOption(sortOption)">
+                <span class="text-success glyphicon glyphicon-ok"
+                  ng-show="filterOptions.currentSortOption===sortOption"></span>
+                  {{sortOption.label}}</a></li>
+            <li><a href="#"></a></li>
+          </ul>
         </li>
       </ul>
       <div class="navbar-form navbar-right">
