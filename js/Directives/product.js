@@ -10,10 +10,10 @@ app.directive('product',function() {
       descriptionViewModes = [
         {
           textLimit: 200,
-          action: "More..."
+          action: "More\u2026"
         }, {
           textLimit: 99999,
-          action: "Less..."
+          action: "Less\u2026"
         }
       ];
 
