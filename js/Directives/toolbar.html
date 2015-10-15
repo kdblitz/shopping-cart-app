@@ -9,7 +9,6 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="myfilters">
-      <p class="navbar-text navbar-right">Hello <a href="#" class="navbar-link">^_^</a>!</p>
       <ul class="nav navbar-nav">
         <li ng-class="{'active':showSpecialOffers}"
           ng-click="showSpecialOffers = !showSpecialOffers">
@@ -30,11 +29,12 @@
           </ul>
         </li>
       </ul>
-      <div class="navbar-form">
+      <div class="navbar-form navbar-right">
         <input class="form-control" type="text" id="filter"
           placeholder="Search items here!"
           ng-model="filtering"/>
       </div>
+      <p class="navbar-text navbar-right">Hello <a href="#" class="navbar-link">^_^</a>!</p>
     </div>
   </div>
   <!--<div class="row">

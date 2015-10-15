@@ -3,17 +3,6 @@ app.controller( "ProductCtrl", function ($scope, ProductService) {
   $scope.categoryFilter = [];
   $scope.products = ProductService;
 
-  $scope.toggleDescription = function(product) {
-    if (product.shortDescription) {
-      product.limit = 999
-      product.actions = "Less..."
-    } else {
-      product.limit = 200
-      product.actions = "More..."
-    }
-    product.shortDescription = !product.shortDescription
-  }
-
   $scope.sortOptions= [
     {
       name: "name",
@@ -49,7 +38,7 @@ app.controller( "ProductCtrl", function ($scope, ProductService) {
       chosenOption++;
 
     $scope.currentSortOption = $scope.sortOptions[chosenOption]
-  }
+  };
 
   $scope.getCategories = function() {
     var categories = []
@@ -66,35 +55,5 @@ app.controller( "ProductCtrl", function ($scope, ProductService) {
     } else {
       $scope.categoryFilter.push(category)
     }
-  }
-})
-
-app.directive('sortButton',function() {
-  return {
-    restrict: 'E',
-    template: ""
-  }
-})
-
-app.directive('toolbar', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'toolbar.html',
-    replace:true
-  }
-})
-
-app.filter('filterByTags',function() {
-  return function(items,categoryFilter) {
-    var filteredItems = []
-    _.forEach(items,function(product) {
-      var matches = true;
-      categoryFilter.forEach(function(category) {
-        matches = matches && (product.categories.indexOf(category) > -1)
-      })
-      if (matches)
-        filteredItems.push(product)
-    })
-    return filteredItems
   }
 })

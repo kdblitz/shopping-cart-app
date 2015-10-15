@@ -1,19 +1,19 @@
 <div class="thumbnail">
-  <button class="btn btn-default btn-link pull-right" ng-click="editMode=!editMode">
+  <button class="btn btn-default btn-link pull-right" ng-click="currentViewMode.editMode=!currentViewMode.editMode">
     <span class="glyphicon glyphicon-edit"></span>
   </button>
   <img class="img-responsive" ng-src="{{product.imageUrl}}" />
-  <div class="caption" ng-hide="editMode">
+  <div class="caption" ng-hide="currentViewMode.editMode">
     <span class="label label-primary" ng-repeat="category in product.categories">{{category}}</span>
     <h3 class="product_name">{{product.name}}</h3>
-    <p class="product_description">{{product.description | limitTo:product.limit}}</p>
-    <button type="button" class="btn btn-primary" ng-click="toggleDescription(product)">{{product.actions}}</button>
+    <p class="product_description">{{product.description | limitTo:currentViewMode.description.textLimit}}</p>
+    <button type="button" class="btn btn-primary" ng-click="toggleDescription(product)">{{currentViewMode.description.action}}</button>
     <button type="button" class="btn btn-link" ng-click="product.addedToCart = !product.addedToCart">
-      <span ng-show="product.addedToCart" 
+      <span ng-show="product.addedToCart"
         class="glyphicon glyphicon-check"></span>Buy it!</button>
     <p class="text-right">{{product.price | currency : '€ '}}</p>
   </div>
-  <form ng-show="editMode">
+  <form ng-show="currentViewMode.editMode">
     <input type="text" class="form-control" ng-model="product.imageUrl">
     <input type="text" class="form-control" ng-model="product.sname">
     <textarea class="form-control" rows="3" ng-model="product.description"></textarea>
