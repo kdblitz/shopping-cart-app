@@ -1,8 +1,4 @@
 app.controller( "ProductCtrl", function ($scope, ProductService) {
-  $scope.showSpecialOffers = true;
-  $scope.categoryFilter = [];
-  $scope.products = ProductService;
-
   $scope.sortOptions= [
     {
       name: "name",

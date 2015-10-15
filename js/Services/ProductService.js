@@ -35,6 +35,11 @@ app.factory('ProductService', function() {
     categories: ["Electronics", "Tablet"],
     specialOffer:true,
     addedToCart: false
-  }]
-  return product;
+  }];
+  
+  return {
+    getProducts: function() {
+      return product;
+    }
+  };
 })
