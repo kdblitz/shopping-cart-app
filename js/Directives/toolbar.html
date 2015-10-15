@@ -18,21 +18,26 @@
               'text-danger glyphicon-eye-close': !showSpecialOffers}"></span>
             Special Offers</a>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags</a>
-          <ul class="dropdown-menu">
-            <li ng-repeat="category in getCategories()"
-              ng-click="toggleCategoryFilter(category)">
-              <a href="#">
-                <span ng-show="categoryFilter.indexOf(category) > -1" class="text-success glyphicon glyphicon-ok"></span>
-                {{category}}</a></li>
-          </ul>
-        </li>
       </ul>
       <div class="navbar-form navbar-right">
-        <input class="form-control" type="text" id="filter"
-          placeholder="Search items here!"
-          ng-model="filtering"/>
+        <div class="input-group">
+          <input class="form-control" type="text" id="filter"
+            placeholder="Search items here!"
+            ng-model="filtering"/>
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          <div class="input-group-btn dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-tag"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li ng-repeat="category in getCategories()"
+                ng-click="toggleCategoryFilter(category)">
+                <a href="#">
+                  <span ng-show="categoryFilter.indexOf(category) > -1" class="text-success glyphicon glyphicon-ok"></span>
+                  {{category}}</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
       <p class="navbar-text navbar-right">Hello <a href="#" class="navbar-link">^_^</a>!</p>
     </div>

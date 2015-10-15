@@ -4,7 +4,8 @@
   </button>
   <img class="img-responsive" ng-src="{{product.imageUrl}}" />
   <div class="caption" ng-hide="currentViewMode.editMode">
-    <span class="label label-primary" ng-repeat="category in product.categories">{{category}}</span>
+    <span class="label label-primary" ng-repeat-start="category in product.categories">{{category}}</span>
+    <span ng-repeat-end> </span>
     <h3 class="product_name">{{product.name}}</h3>
     <p class="product_description">{{product.description | limitTo:currentViewMode.description.textLimit}}</p>
     <button type="button" class="btn btn-primary" ng-click="toggleDescription(product)">{{currentViewMode.description.action}}</button>
