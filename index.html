@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="ShoppingCartApp">
+  <head>
+    <meta charset="utf8">
+    <title>My First Angular App</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+
+  <body style="padding-top:60px" ng-controller="ProductCtrl">
+    <toolbar></toolbar>
+    <div class="container">
+      <div class="col-md-12">
+        <div class="row" ng-if="showSpecialOffers">
+          <h2 class="text-center">Special offers</h2>
+          <div ng-if="(products | filterByTags:categoryFilter | filter:{specialOffer:true,$:filtering}).length == 0">
+            There are no products available.
+          </div>
+          <div class="col-xs-6 col-md-3"
+            ng-repeat="product in products | filterByTags:categoryFilter | filter:{specialOffer:true,$:filtering}:productFilter | orderBy:currentSortOption.name:currentSortOption.desc">
+            <product product="product"></product>
+          </div>
+        </div>
+        <div class="row">
+          <h2 class="text-center">Other products</h2>
+          <div ng-if="(products | filterByTags:categoryFilter | filter:{specialOffer:false,$:filtering}).length == 0">
+            There are no products available.
+          </div>
+          <div class="col-xs-6 col-md-3"
+            ng-repeat="product in products | filterByTags:categoryFilter | filter:{specialOffer:false,$:filtering} | orderBy:currentSortOption.name:currentSortOption.desc">
+            <product product="product"></product>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+
+      </div>
+      <pre>{{categoryFilter}}</pre>
+
+    </div>
+    <script src="/ext-js/jquery.min.js"></script>
+    <script src="/ext-js/bootstrap.min.js"></script>
+    <script src="/ext-js/angular.js"></script>
+    <script src="/ext-js/lodash.min.js"></script>
+    <script src="/js/registry.js"></script>
+    <script src="/js/Directives/product.js"></script>
+    <script src="/js/Services/ProductService.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
