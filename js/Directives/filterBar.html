@@ -11,14 +11,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myfilters">
       <ul class="nav navbar-nav">
-        <li ng-class="{'active':filterOptions.showSpecialOffers}"
-          ng-click="toggleSpecialOffers()">
-          <a href="#">
-            <span class="glyphicon"
-              ng-class="{'text-success glyphicon-eye-open': filterOptions.showSpecialOffers,
-              'text-danger glyphicon-eye-close': !filterOptions.showSpecialOffers}"></span>
-            Special Offers</a>
-        </li>
+        <special-offer-button show-special-offers="filterOptions.showSpecialOffers"></special-offer-button>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Sorted by: {{filterOptions.currentSortOption.label}}
