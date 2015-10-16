@@ -5,7 +5,7 @@ app.directive('product',function() {
     scope: {
       product:'='
     },
-    templateUrl: 'js/Directives/product.html',
+    templateUrl: 'js/Directives/productList/product.html',
     link: function(scope) {
       descriptionViewModes = [
         {
