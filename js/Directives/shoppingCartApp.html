@@ -2,6 +2,8 @@
   <!-- <pre>{{ filterOptions | json }}</pre>
   <pre>{{ products | json }}</pre> -->
   <filter-bar filter-options="filterOptions" products="products"></filter-bar>
-  <product-list filter-options="filterOptions" products="products"></product-list>
-  <order-form></order-form>
+  <div class="container">
+    <order-form></order-form>
+    <product-list filter-options="filterOptions" products="products"></product-list>
+  </div>
 </div>

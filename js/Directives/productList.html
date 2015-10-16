@@ -1,24 +1,22 @@
-<div class="container">
-  <div class="col-md-12">
-    <div class="row" ng-if="filterOptions.showSpecialOffers">
-      <h2 class="text-center">Special offers</h2>
-      <div ng-if="(products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:true,$:filterOptions.productQuery}).length == 0">
-        There are no products available.
-      </div>
-      <div class="col-xs-6 col-md-3"
-        ng-repeat="product in products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:true,$:filterOptions.productQuery}:productFilter | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
-        <product product="product"></product>
-      </div>
+<div class="col-md-12">
+  <div class="row" ng-if="filterOptions.showSpecialOffers">
+    <h2 class="text-center">Special offers</h2>
+    <div ng-if="(products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:true,$:filterOptions.productQuery}).length == 0">
+      There are no products available.
     </div>
-    <div class="row">
-      <h2 class="text-center">Other products</h2>
-      <div ng-if="(products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:false,$:filterOptions.productQuery}).length == 0">
-        There are no products available.
-      </div>
-      <div class="col-xs-6 col-md-3"
-        ng-repeat="product in products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:false,$:filterOptions.productQuery} | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
-        <product product="product"></product>
-      </div>
+    <div class="col-xs-6 col-md-3"
+      ng-repeat="product in products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:true,$:filterOptions.productQuery}:productFilter | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
+      <product product="product"></product>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="text-center">Other products</h2>
+    <div ng-if="(products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:false,$:filterOptions.productQuery}).length == 0">
+      There are no products available.
+    </div>
+    <div class="col-xs-6 col-md-3"
+      ng-repeat="product in products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:false,$:filterOptions.productQuery} | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
+      <product product="product"></product>
     </div>
   </div>
 </div>
