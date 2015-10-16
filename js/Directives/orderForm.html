@@ -20,19 +20,19 @@
     <div class="form-group">
       <label for="postcode">Postcode</label> and <label for="city">City</label>
       <div class="row">
-        <div class="col-xs-4 col-md-3">
+        <div class="col-xs-4 col-md-3" ng-class="{
+          'has-error': orderForm.postcode.$invalid,
+          'has-success': orderForm.postcode.$valid
+        }">
           <input id="postcode" name="postcode" type="text" class="form-control" placeholder="Postcode (00-000)"
-            ng-model="vm.formData.postcode" ng-class="{
-              'has-error': orderForm.postcode.$invalid,
-              'has-success': orderForm.postcode.$valid
-            }" required>
+            ng-model="vm.formData.postcode" required>
         </div>
-        <div class="col-xs-8 col-md-9">
+        <div class="col-xs-8 col-md-9" ng-class="{
+          'has-error': orderForm.city.$invalid,
+          'has-success': orderForm.city.$valid
+        }">
           <input id="city" name="city" type="text" class="form-control" placeholder="City"
-            ng-model="vm.formData.city" ng-class="{
-              'has-error': orderForm.city.$invalid,
-              'has-success': orderForm.city.$valid
-            }" required>
+            ng-model="vm.formData.city" required>
         </div>
       </div>
     </div>
