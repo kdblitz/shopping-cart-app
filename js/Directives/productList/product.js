@@ -7,23 +7,19 @@ app.directive('product',function() {
     },
     templateUrl: 'js/Directives/productList/product.html',
     controller: function($scope, ProductService) {
-      var descriptionViewModeIdx = 0;
-
       $scope.currentViewMode = {
-        descriptionViewMode: ProductService.descriptionViewModes[descriptionViewModeIdx],
+        descriptionViewMode: 'More',
         editMode: false
       };
 
       $scope.getProductDescription = function() {
-        return ProductService.showProductDescription(
-          $scope.product.description, $scope.currentViewMode.descriptionViewMode.limit);
+        var limit = ($scope.currentViewMode.descriptionViewMode === 'More') ? 200 : null;
+        return ProductService.showProductDescription( $scope.product.description, limit);
       };
 
-      $scope.getProductDescription();
-
       $scope.toggleDescription = function() {
-        descriptionViewModeIdx = (descriptionViewModeIdx + 1) % 2;
-        $scope.currentViewMode.descriptionViewMode = ProductService.descriptionViewModes[descriptionViewModeIdx];
+        $scope.currentViewMode.descriptionViewMode =
+          ($scope.currentViewMode.descriptionViewMode === 'More')? 'Less' : 'More';
       };
 
     }

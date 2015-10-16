@@ -41,16 +41,6 @@ app.factory('ProductService', function($filter) {
     return product;
   }
 
-  var descriptionViewModes = [
-    {
-      limit: 200,
-      action: "More\u2026"
-    }, {
-      limit: null,
-      action: "Less\u2026"
-    }
-  ];
-
   function showProductDescription(description, limit) {
     if (limit) {
       return $filter('limitTo')(description, limit) + '\u2026';
@@ -61,7 +51,6 @@ app.factory('ProductService', function($filter) {
 
   return {
     getProducts: getProducts,
-    descriptionViewModes: descriptionViewModes,
     showProductDescription: showProductDescription,
   };
 })

@@ -8,7 +8,7 @@
     <span ng-repeat-end> </span>
     <h3 class="product_name">{{product.name}}</h3>
     <p class="product_description">{{getProductDescription()}}</p>
-    <button type="button" class="btn btn-primary" ng-click="toggleDescription()">{{currentViewMode.descriptionViewMode.action}}</button>
+    <button type="button" class="btn btn-primary" ng-click="toggleDescription()">{{currentViewMode.descriptionViewMode}}</button>
     <button type="button" class="btn btn-link" ng-click="product.addedToCart = !product.addedToCart">
       <span ng-show="product.addedToCart"
         class="glyphicon glyphicon-check"></span>Buy it!</button>
