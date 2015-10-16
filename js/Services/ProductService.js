@@ -1,4 +1,4 @@
-app.factory('ProductService', function() {
+app.factory('ProductService', function($filter) {
   var product = [
   {
     imageUrl: "http://lorempixel.com/280/200/sports/1",
@@ -36,10 +36,32 @@ app.factory('ProductService', function() {
     specialOffer:true,
     addedToCart: false
   }];
-  
-  return {
-    getProducts: function() {
-      return product;
+
+  function getProducts() {
+    return product;
+  }
+
+  var descriptionViewModes = [
+    {
+      limit: 200,
+      action: "More\u2026"
+    }, {
+      limit: null,
+      action: "Less\u2026"
     }
+  ];
+
+  function showProductDescription(description, limit) {
+    if (limit) {
+      return $filter('limitTo')(description, limit) + '\u2026';
+    } else {
+      return description;
+    }
+  }
+
+  return {
+    getProducts: getProducts,
+    descriptionViewModes: descriptionViewModes,
+    showProductDescription: showProductDescription,
   };
 })

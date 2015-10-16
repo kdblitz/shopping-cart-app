@@ -1,26 +1,38 @@
 <div class="well">
   <h2>I want to order the products</h2>
   <form name="orderForm" novalidate>
-    <div class="form-group">
-      <label for="name">First and last name</label>
-      <input id="name" type="text" class="form-control" placeholder="Enter your name here!"
-        ng-model="formData.name" required>
+    <div class="form-group" ng-class="{
+      'has-error': orderForm.name.$invalid,
+      'has-success': orderForm.name.$valid
+    }">
+      <label for="name" class="form-label">First and last name</label>
+      <input id="name" name="name" type="text" class="form-control" placeholder="Enter your name here!"
+        ng-model="vm.formData.name" required>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{
+      'has-error': orderForm.street.$invalid,
+      'has-success': orderForm.street.$valid
+    }">
       <label for="street">Street</label>
-      <input id="street" type="text" class="form-control" placeholder="Long street 21"
-        ng-model="formData.street" required>
+      <input id="street" name="street" type="text" class="form-control" placeholder="Long street 21"
+        ng-model="vm.formData.street" required>
     </div>
     <div class="form-group">
       <label for="postcode">Postcode</label> and <label for="city">City</label>
       <div class="row">
         <div class="col-xs-4 col-md-3">
-          <input id="postcode" type="text" class="form-control" placeholder="Postcode (00-000)"
-            ng-model="formData.postcode" required>
+          <input id="postcode" name="postcode" type="text" class="form-control" placeholder="Postcode (00-000)"
+            ng-model="vm.formData.postcode" ng-class="{
+              'has-error': orderForm.postcode.$invalid,
+              'has-success': orderForm.postcode.$valid
+            }" required>
         </div>
         <div class="col-xs-8 col-md-9">
-          <input id="city" type="text" class="form-control" placeholder="City"
-            ng-model="formData.city" required>
+          <input id="city" name="city" type="text" class="form-control" placeholder="City"
+            ng-model="vm.formData.city" ng-class="{
+              'has-error': orderForm.city.$invalid,
+              'has-success': orderForm.city.$valid
+            }" required>
         </div>
       </div>
     </div>

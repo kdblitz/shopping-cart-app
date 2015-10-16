@@ -3,14 +3,25 @@ app.directive('orderForm', function() {
     restrict: 'E',
     templateUrl: 'js/Directives/orderForm.html',
     scope: {
+      // gh: '='
+    },
+    controllerAs: 'vm',
+    bindToController: true,
+    controller: function ($scope) {
 
-    }, link: function(scope) {
-      scope.formData = {
+      $scope.formData = {
         name:'',
         street:'',
         postcode:'',
         city:''
       };
+
+      // $scope.vm === this;
+      // this.gh ==
+      // $scope.vm.gh
+      // this.formData = {
+      //
+      // };
     }
   }
 });
