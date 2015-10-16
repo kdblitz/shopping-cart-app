@@ -12,41 +12,10 @@
     <div class="collapse navbar-collapse" id="myfilters">
       <ul class="nav navbar-nav">
         <special-offer-button show-special-offers="filterOptions.showSpecialOffers"></special-offer-button>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Sorted by: {{filterOptions.currentSortOption.label}}
-          </a>
-          <ul class="dropdown-menu">
-            <li ng-repeat="sortOption in sortOptions">
-              <a href="#" ng-click="updateSortOption(sortOption)">
-                <span class="text-success glyphicon glyphicon-ok"
-                  ng-show="filterOptions.currentSortOption===sortOption"></span>
-                  {{sortOption.label}}</a></li>
-            <li><a href="#"></a></li>
-          </ul>
-        </li>
+        <sort-options current-sort-option="filterOptions.currentSortOption"></sort-options>
       </ul>
       <div class="navbar-form navbar-right">
-        <div class="input-group">
-          <input class="form-control" type="text" id="filter"
-            placeholder="Search items here!"
-            ng-model="filtering"/>
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
-          <div class="input-group-btn dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-tag"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li ng-repeat="category in categories"
-                ng-click="toggleCategoryFilter(category)">
-                <a href="#">
-                  <span ng-show="filterOptions.categoryFilter.indexOf(category) > -1"
-                    class="text-success glyphicon glyphicon-ok"></span>
-                    {{category}}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <search-bar filter-options="filterOptions" products="products"></search-bar>
       </div>
       <p class="navbar-text navbar-right">Hello <a href="#" class="navbar-link">^_^</a>!</p>
     </div>

@@ -1,0 +1,19 @@
+<div class="input-group">
+  <input class="form-control" type="text" id="filter"
+    placeholder="Search items here!"
+    ng-model="filterOptions.productQuery"/>
+  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+  <div class="input-group-btn dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-tag"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li ng-repeat="category in categories"
+        ng-click="toggleCategoryFilter(category)">
+        <a href="#">
+          <span ng-show="filterOptions.categoryFilter.indexOf(category) > -1"
+            class="text-success glyphicon glyphicon-ok"></span>
+            {{category}}</a>
+      </li>
+    </ul>
+  </div>
