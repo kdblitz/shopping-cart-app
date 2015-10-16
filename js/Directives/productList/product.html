@@ -12,7 +12,7 @@
     <button type="button" class="btn btn-link" ng-click="product.addedToCart = !product.addedToCart">
       <span ng-show="product.addedToCart"
         class="glyphicon glyphicon-check"></span>Buy it!</button>
-    <p class="text-right">{{product.price | currency : '€ '}}</p>
+    <p class="text-right">{{price}}</p>
   </div>
   <form ng-show="currentViewMode.editMode">
     <input type="text" class="form-control" ng-model="product.imageUrl">

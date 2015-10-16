@@ -10,7 +10,10 @@ app.directive('shoppingCartApp', function() {
         currentSortOption: ProductFilterService.sortOptions[0],
         categoryFilter: []
       };
-
+      $scope.tracks = null;
+      // ConversionService.getConversionRates('USD','PHP').then(function(multiplier) {
+      //   $scope.rate = multiplier;
+      // })
     },
     templateUrl: 'js/Directives/shoppingCartApp.html'
   };

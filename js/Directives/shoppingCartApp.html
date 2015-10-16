@@ -1,9 +1,8 @@
 <div>
-  <!-- <pre>{{ filterOptions | json }}</pre>
-  <pre>{{ products | json }}</pre> -->
+  <pre>{{rate|json}}</pre>
   <filter-bar filter-options="filterOptions" products="products"></filter-bar>
   <div class="container">
-    <order-form></order-form>
     <product-list filter-options="filterOptions" products="products"></product-list>
+    <order-form></order-form>
   </div>
 </div>

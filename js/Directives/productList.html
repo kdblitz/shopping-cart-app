@@ -1,4 +1,5 @@
 <div class="col-md-12">
+  <pre>{{conversionRate|json}}</pre>
   <div class="row" ng-if="filterOptions.showSpecialOffers">
     <h2 class="text-center">Special offers</h2>
     <div ng-if="(products | filterByTags:filterOptions.categoryFilter | filter:{specialOffer:true,$:filterOptions.productQuery}).length == 0">

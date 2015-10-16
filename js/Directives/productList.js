@@ -5,8 +5,11 @@ app.directive('productList', function() {
     scope: {
       filterOptions: '=',
       products: '='
-    }, link: function(scope) {
-      scope.categoryFilter = [];
+    }, controller: function($scope, ConversionService) {
+      $scope.categoryFilter = [];
+      ConversionService.changeRate('USD','PHP').then(function(rate) {
+        $scope.conversionRate = rate;
+      });
     }
   };
 });

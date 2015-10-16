@@ -6,7 +6,7 @@ app.directive('product',function() {
       product:'='
     },
     templateUrl: 'js/Directives/productList/product.html',
-    controller: function($scope, ProductService) {
+    controller: function($scope, ProductService, ConversionService) {
       $scope.currentViewMode = {
         descriptionViewMode: 'More',
         editMode: false
@@ -22,6 +22,10 @@ app.directive('product',function() {
           ($scope.currentViewMode.descriptionViewMode === 'More')? 'Less' : 'More';
       };
 
+      $scope.price = ConversionService.getConvertedRate($scope.product.price);
+      $scope.$watch(ConversionService.getActiveRate, function() {
+        $scope.price = ConversionService.getConvertedRate($scope.product.price);
+      });
     }
   }
 });
