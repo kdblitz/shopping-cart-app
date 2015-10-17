@@ -8,8 +8,7 @@ app.directive('orderForm', function() {
     controllerAs: 'vm',
     bindToController: true,
     controller: function ($scope) {
-
-      $scope.formData = {
+      this.formData = {
         name:'',
         street:'',
         postcode:'',

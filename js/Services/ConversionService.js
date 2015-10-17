@@ -1,4 +1,12 @@
-app.factory('ConversionService', function($http, $filter) {
+app.factory('ConversionService', function($http, $q, $filter) {
+  var availableConversions = [
+    'USD','EUR','PHP'
+  ];
+
+  function getAvailableConversions() {
+    return availableConversions;
+  }
+
   var activeRate = {
     from:'USD',
     to:'USD',
@@ -10,6 +18,15 @@ app.factory('ConversionService', function($http, $filter) {
   }
 
   function changeRate(from, to) {
+    if (from === to) {
+      activeRate = {
+        from: from,
+        to: to,
+        rate: 1
+      }
+      return $q.when(activeRate);
+    }
+
     return $http.get('http://api.fixer.io/latest?base='+from).then(function(res) {
       activeRate = {
         from:from,
@@ -21,11 +38,11 @@ app.factory('ConversionService', function($http, $filter) {
   }
 
   function getConvertedRate(rate) {
-    console.log(activeRate.rate);
     return $filter('currency')(rate * activeRate.rate, activeRate.to);
   }
 
   return {
+    getAvailableConversions: getAvailableConversions,
     getActiveRate: getActiveRate,
     changeRate: changeRate,
     getConvertedRate: getConvertedRate
