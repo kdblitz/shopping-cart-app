@@ -7,9 +7,7 @@ app.directive('productList', function() {
       products: '='
     }, controller: function($scope, ConversionService) {
       $scope.categoryFilter = [];
-      ConversionService.changeRate('USD','PHP').then(function(rate) {
-        $scope.conversionRate = rate;
-      });
+      $scope.conversionRate = ConversionService.getActiveRate();
     }
   };
 });

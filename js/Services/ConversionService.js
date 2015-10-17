@@ -1,4 +1,4 @@
-app.factory('ConversionService', function($http, $q, $filter) {
+app.factory('ConversionService', function($http, $q, $filter, $timeout) {
   var availableConversions = [
     'USD','EUR','PHP'
   ];
@@ -17,6 +17,17 @@ app.factory('ConversionService', function($http, $q, $filter) {
     return activeRate;
   }
 
+  var monitorRate = null;
+  function startMonitoring() {
+    changeRate(activeRate.from, activeRate.to)
+    monitorRate = $timeout(startMonitoring, 5000);
+  }
+
+  function stopMonitoring() {
+    monitorRate();
+    monitorRate = null;
+  }
+
   function changeRate(from, to) {
     if (from === to) {
       activeRate = {
@@ -25,16 +36,16 @@ app.factory('ConversionService', function($http, $q, $filter) {
         rate: 1
       }
       return $q.when(activeRate);
+    } else {
+      return $http.get('http://api.fixer.io/latest?base='+from).then(function(res) {
+        activeRate = {
+          from:from,
+          to:to,
+          rate:res.data.rates[to]
+        }
+        return activeRate;
+      });
     }
-
-    return $http.get('http://api.fixer.io/latest?base='+from).then(function(res) {
-      activeRate = {
-        from:from,
-        to:to,
-        rate:res.data.rates[to]
-      }
-      return activeRate;
-    });
   }
 
   function getConvertedRate(rate) {
@@ -42,6 +53,8 @@ app.factory('ConversionService', function($http, $q, $filter) {
   }
 
   return {
+    startMonitoring: startMonitoring,
+    stopMonitoring: stopMonitoring,
     getAvailableConversions: getAvailableConversions,
     getActiveRate: getActiveRate,
     changeRate: changeRate,

@@ -15,6 +15,8 @@ app.directive('rateConversionOptions', function() {
           $scope.vm.activeRate = rate;
         });
       };
+
+      ConversionService.startMonitoring();
     }
   }
 })
