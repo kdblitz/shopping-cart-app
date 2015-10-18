@@ -1,7 +1,7 @@
 <div class="input-group">
   <input class="form-control" type="text" id="filter"
-    placeholder="Search items here!"
-    ng-model="filterOptions.productQuery"/>
+    placeholder="Search items here!" ng-change="filterProductByQuery()"
+    ng-model="productQuery"/>
   <span class="glyphicon glyphicon-search form-control-feedback"></span>
   <div class="input-group-btn dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -17,3 +17,4 @@
       </li>
     </ul>
   </div>
+</div>

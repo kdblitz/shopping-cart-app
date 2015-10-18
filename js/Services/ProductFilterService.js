@@ -1,4 +1,4 @@
-app.factory('ProductFilterService', function($filter) {
+app.factory('ProductFilterService', function($filter, $q) {
   var sortOptions= [
     {
       name: "name",
@@ -22,6 +22,9 @@ app.factory('ProductFilterService', function($filter) {
     }
   ];
 
+  var filterProductByQuery = function(products, query) {
+    return $q.when($filter('filter')(products,query));
+  }
 
   var getCategories = function(products) {
     var categories = [];
@@ -40,8 +43,14 @@ app.factory('ProductFilterService', function($filter) {
     }
   }
 
+  var filterProductByCategory = function(products, categories) {
+    return $q.when($filter('filterByTags')(products, categories));
+  }
+
   return {
     sortOptions: sortOptions,
+    filterProductByQuery: filterProductByQuery,
+    filterProductByCategory: filterProductByCategory,
     getCategories: getCategories,
     toggleCategoryFilter: toggleCategoryFilter
   };

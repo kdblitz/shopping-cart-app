@@ -12,6 +12,7 @@ app.directive('rateConversionOptions', function() {
       this.changeRate = function(to) {
         ConversionService.changeRate('USD', to).then(function(rate) {
           // TODO: ask issue here
+          // this.activeRate = rate;
           $scope.vm.activeRate = rate;
         });
       };

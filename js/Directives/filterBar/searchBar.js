@@ -6,16 +6,36 @@ app.directive('searchBar', function() {
     scope: {
       filterOptions:'=',
       products:'='
-    }, controller: function($scope,ProductFilterService) {
-      $scope.$watch(function() {
-        return $scope.products
-      }, function(products) {
+    }, controller: function($scope,ProductFilterService, $q) {
+      $scope.productQuery = '';
+      var categoryFilter = [];
+
+      $scope.filterProductByQuery = function() {
+          return ProductFilterService.filterProductByQuery(
+              $scope.products.productList, $scope.productQuery).then(function(result) {
+                  $scope.products.filteredProductByQuery = result;
+                  updateCategories(result);
+                  return result;
+              });
+      };
+
+      function updateCategories(products) {
         $scope.categories = ProductFilterService.getCategories(products);
-      });
+      };
+
+      $scope.filterProductByCategory = function() {
+          return ProductFilterService.filterProductByCategory(
+              $scope.products.filteredProductByQuery, categoryFilter).then(function(result) {
+                  $scope.products.filteredProductByCategory = result;
+              });
+      }
 
       $scope.toggleCategoryFilter = function(category) {
-        ProductFilterService.toggleCategoryFilter($scope.categoryFilter, category);
+        ProductFilterService.toggleCategoryFilter(categoryFilter, category);
+        $scope.products.filteredProductByCategory = $scope.filterProductByCategory();
       };
+
+      $scope.filterProductByQuery().then($scope.filterProductByCategory);
     }
   }
 });
