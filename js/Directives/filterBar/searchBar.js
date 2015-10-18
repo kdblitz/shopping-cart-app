@@ -7,15 +7,14 @@ app.directive('searchBar', function() {
       products:'='
     }, controller: function($scope,ProductFilterService, $q) {
       $scope.productQuery = '';
-      var categoryFilter = [];
+      $scope.categoryFilter = [];
 
       $scope.filterProductByQuery = function() {
         return ProductFilterService.filterProductByQuery(
           $scope.products.productList, $scope.productQuery).then(function(result) {
             $scope.products.filteredProductByQuery = result;
             updateCategories(result);
-            return result;
-          });
+          }).then($scope.filterProductByCategory);
       };
 
       function updateCategories(products) {
@@ -24,17 +23,17 @@ app.directive('searchBar', function() {
 
       $scope.filterProductByCategory = function() {
         return ProductFilterService.filterProductByCategory(
-          $scope.products.filteredProductByQuery, categoryFilter).then(function(result) {
+          $scope.products.filteredProductByQuery, $scope.categoryFilter).then(function(result) {
             $scope.products.filteredProductByCategory = result;
           });
       }
 
       $scope.toggleCategoryFilter = function(category) {
-        ProductFilterService.toggleCategoryFilter(categoryFilter, category);
+        ProductFilterService.toggleCategoryFilter($scope.categoryFilter, category);
         $scope.filterProductByCategory();
       };
 
-      $scope.filterProductByQuery().then($scope.filterProductByCategory);
+      $scope.filterProductByQuery();
     }
   }
 });

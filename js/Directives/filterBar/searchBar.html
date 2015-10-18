@@ -1,5 +1,4 @@
 <div class="input-group">
-  <pre>{{categoryFilter|json}}</pre>
   <div class="form-group has-feedback">
     <input class="form-control" type="text" id="filter"
       placeholder="Search items here!" ng-change="filterProductByQuery()"
@@ -14,7 +13,7 @@
       <li ng-repeat="category in categories"
         ng-click="toggleCategoryFilter(category)">
         <a href="#">
-          <span ng-show="categoryFilter.indexOf(category) > -1"
+          <span ng-show="categoryFilter.indexOf(category) !== -1"
             class="text-success glyphicon glyphicon-ok"></span>
             {{category}}</a>
       </li>
