@@ -4,7 +4,7 @@
     <div ng-if="(products.filteredProductByCategory | filter:{specialOffer:true}).length == 0">
       There are no products available.
     </div>
-    <div class="col-xs-6 col-md-3"
+    <div class="col-xs-6 col-md-4"
       ng-repeat="product in products.filteredProductByCategory | filter:{specialOffer:true} | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
       <product product="product"></product>
     </div>
@@ -14,7 +14,7 @@
     <div ng-if="(products.filteredProductByCategory | filter:{specialOffer:false}).length == 0">
       There are no products available.
     </div>
-    <div class="col-xs-6 col-md-3"
+    <div class="col-xs-6 col-md-4"
       ng-repeat="product in products.filteredProductByCategory | filter:{specialOffer:false} | orderBy:filterOptions.currentSortOption.name:filterOptions.currentSortOption.desc">
       <product product="product"></product>
     </div>

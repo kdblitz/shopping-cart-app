@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('shoppingCartApp', function() {
+app.directive('shoppingApp', function() {
   return {
     restrict: 'E',
     controller: function($scope, ProductService, ProductFilterService) {
@@ -14,6 +14,6 @@ app.directive('shoppingCartApp', function() {
       };
       $scope.tracks = null;
     },
-    templateUrl: 'js/Directives/shoppingCartApp.html'
+    templateUrl: 'js/Directives/shoppingApp.html'
   };
 });
