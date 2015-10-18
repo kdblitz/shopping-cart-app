@@ -5,7 +5,7 @@ app.directive('searchBar', function() {
     templateUrl: 'js/Directives/filterBar/searchBar.html',
     scope: {
       products:'='
-    }, controller: function($scope,ProductFilterService, $q) {
+    }, controller: function($scope, ProductFilterService) {
       $scope.productQuery = '';
       $scope.categoryFilter = [];
 

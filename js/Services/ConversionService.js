@@ -27,7 +27,7 @@ app.factory('ConversionService', function($http, $q, $filter, $timeout) {
     monitorRate();
     monitorRate = null;
   }
-
+  
   function changeRate(from, to) {
     if (from === to) {
       activeRate = {
